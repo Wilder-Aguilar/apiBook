@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
+import { DB_PASSWORD } from "../config.js";
 
-const conection_db = new Sequelize('book_app', 'root', '12345', {
+const conection_db = new Sequelize('book_app', 'root', DB_PASSWORD, {
     host: 'localhost',
     dialect: 'mysql',
     define: {
