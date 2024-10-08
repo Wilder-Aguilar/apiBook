@@ -1,5 +1,7 @@
 import request from "supertest";
-import { app } from "../app.js";
+import { app , server } from "../app.js";
+import conection_db from "../database/conectionDb.js";
+
 
 describe ("crud books", ()=>{
     test("should return a response with status 200 and type json", async ()=>{
@@ -8,6 +10,7 @@ describe ("crud books", ()=>{
         expect(response.header["content-type"]).toContain("application/json")
     });
     afterAll(()=>{
-        app.close();
+        server.close();
+        conection_db.close();
     });
 });
