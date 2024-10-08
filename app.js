@@ -9,9 +9,10 @@ export const app = express()
 app.use (cors())
 app.use (express.json())
 
-app.get ("/hola", (req,res)=>{
+app.get ("/hola", (req,res) => {
   res.send('Hola primera api')
-})
+}
+)
 
 app.use('/books', bookRouter)
 
@@ -26,6 +27,7 @@ try {
     console.error('Ups, conexion fallida 😢', error);
   }
 
-export const server = app.listen(8000,()=>{
+export const server = app.listen(8000,() => {
   console.log('working server up http://localhost:8000')
-})
+}
+)

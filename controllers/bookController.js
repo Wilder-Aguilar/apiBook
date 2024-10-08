@@ -1,6 +1,6 @@
 import bookModel from "../models/bookModel.js"
 
-export const getAllBooks = async(req,res)=>{
+export const getAllBooks = async(req,res) => {
     try{
         const books = await bookModel.findAll()
         res.json(books)
@@ -9,4 +9,3 @@ export const getAllBooks = async(req,res)=>{
             res.json(message, error.message)
         }
 }
-
