@@ -9,3 +9,19 @@ export const getAllBooks = async(req,res) => {
             res.json(message, error.message)
         }
 }
+
+export const createBook = async(req,res) => {
+    try {
+        const bookTitle = req.body.bookTitle;
+        const authorName = req.body.authorName;
+        const bookDescription = req.body.bookDescription;
+        const newBook = await bookModel.create({
+            bookTitle,
+            authorName,
+            bookDescription
+        });
+        res.status(201).json(newBook);
+    } catch (error){
+        res.status(500).json({messageg: error.message});
+    }
+}

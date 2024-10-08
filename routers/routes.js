@@ -1,11 +1,13 @@
 import express from 'express';
 import { getAllBooks} from '../controllers/bookController.js';
+import { createBook } from '../controllers/bookController.js';
+
 
 const bookRouter = express.Router ();
 
 bookRouter.get('/', getAllBooks);
 // bookRouter.get('/:id', getOneBook);
-// bookRouter.post('/', postBook);
+bookRouter.post('/', createBook);
 // bookRouter.put('/:id', putBook);
 // bookRouter.delete('/:id', deleteBook);
 
