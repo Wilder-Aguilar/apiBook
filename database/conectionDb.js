@@ -1,7 +1,10 @@
 import { Sequelize } from "sequelize";
-import { DB_PASSWORD } from "../config.js";
+import { DB_DEV_NAME, DB_PASSWORD, DB_TEST_NAME, NODE_ENV } from "../config.js";
 
-const conection_db = new Sequelize('book_app', 'root', DB_PASSWORD, {
+const DB_NAME = NODE_ENV === " test" ? DB_TEST_NAME:DB_DEV_NAME; 
+
+
+const conection_db = new Sequelize(DB_NAME, 'root', DB_PASSWORD, {
     host: 'localhost',
     dialect: 'mysql',
     define: {
