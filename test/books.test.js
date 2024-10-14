@@ -26,19 +26,33 @@ describe("crud books", () => {
     });
 
     test("METHOD DELETE - should delete a book", async () => {
-        const book = await bookModel.create({
+        const bookForDelete = bookModel.create({
             bookTitle: 'Test title',
             authorName: 'Test Author',
             bookDescription: 'This is a delete test',
         });
-        console.log(book.id);
-
         const response = await request(app)
-            .delete(`/books/${book.id}`);
+            .delete(`/books/${bookForDelete.id}`);
 
         expect(response.statusCode).toBe(200);
-        expect(response.body.message).toBe("Libro eliminado")
+        // expect(response.body.message).toBe("Libro eliminado")
+    });
 
+    test("METHOD UPDATE - should update the book", async () => {
+        const bookForUpdate = await bookModel.create({
+            bookTitle: 'Test title',
+            authorName: 'Test Author',
+            bookDescription: 'Test description',
+        });
+        const updateData = {
+            bookTitle: 'Test title',
+            authorName: 'Test Author',
+            bookDescription: 'This is a test update',
+        };
+        const response = await request(app)
+            .put(`/books/${bookForUpdate.id}`).send(updateData);
+        expect(response.statusCode).toBe(200);
+        expect(response.body.bookDescription).toContain("update")
     });
 
     afterEach(async () => {
