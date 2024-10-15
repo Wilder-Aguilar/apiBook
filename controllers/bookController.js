@@ -81,7 +81,7 @@ export const updateBook = async (req, res) => {
     try {
         const bookId = req.params.id;
         const { bookTitle, authorName, bookDescription } = req.body;
-        await bookModel.update(
+        const updatedBook = await bookModel.update(
             {
                 bookTitle,
                 authorName,
@@ -90,10 +90,32 @@ export const updateBook = async (req, res) => {
             {
                 where: { id: bookId }
             });
-
-        const updatedBook = await bookModel.findByPk(bookId);
-        res.status(200).json(updatedBook);
+        const book = await bookModel.findByPk(bookId);
+        res.status(200).json(book);
     } catch (error) {
         res.json({ message: error.message });
     }
 };
+
+
+//EL SIGUIENTE CÓDIGO ES TAMBIEN VALIDO PARA UPDATE:
+// export const updateBook = async (req, res) => {
+//     try {
+//         const bookId = req.params.id;
+//         const { bookTitle, authorName, bookDescription } = req.body;
+//         await bookModel.update(
+//             {
+//                 bookTitle,
+//                 authorName,
+//                 bookDescription,
+//             },
+//             {
+//                 where: { id: bookId }
+//             });
+
+//         const updatedBook = await bookModel.findByPk(bookId);
+//         res.status(200).json(updatedBook);
+//     } catch (error) {
+//         res.json({ message: error.message });
+//     }
+// };
