@@ -43,7 +43,7 @@ SHOW TABLES;
 
 Las pruebas a las peticiones se realizo mediante Postman, a continuacion se encuentra la documentación correspondiente:
 
-[![Postman](https://img.shields.io/badge/Postman-F65E1D?style=for-the-badge&logo=postman&logoColor=white)] (https://www.postman.com/navigation-participant-18858418/my-workspace/collection/7sy0s7r/apibook?action=share&creator=37812250)
+![Postman](https://img.shields.io/badge/Postman-F65E1D?style=for-the-badge&logo=postman&logoColor=white) <https://www.postman.com/navigation-participant-18858418/my-workspace/collection/7sy0s7r/apibook?action=share&creator=37812250>
 
 ## Testing 🔧
 
@@ -52,8 +52,6 @@ Se ha realizado pruebas de test a cada una de las peticiones CRUD, se ejecuta co
 ```bash
 npm run test
 ```
-
-![Captura de pantalla 2024-10-15 174937](https://github.com/user-attachments/assets/a044802e-67ba-41ba-bca3-42d0929f6ca7)
 
 ## 💻 Tecnologías empleadas 🛠️
 
