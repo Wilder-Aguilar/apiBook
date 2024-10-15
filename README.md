@@ -53,6 +53,8 @@ Se ha realizado pruebas de test a cada una de las peticiones CRUD, se ejecuta co
 npm run test
 ```
 
+![Captura de pantalla 2024-10-15 174937](https://github.com/user-attachments/assets/a044802e-67ba-41ba-bca3-42d0929f6ca7)
+
 ## 💻 Tecnologías empleadas 🛠️
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge&logo=javascript&logoColor=white&labelColor=101010)](https://developer.mozilla.org/es/docs/Web/JavaScript)
