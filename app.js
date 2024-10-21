@@ -1,8 +1,10 @@
 import conection_db from "./database/conectionDb.js";
 import bookModel from "./models/bookModel.js";
+import userModel from "./models/userModel.js";
 import express from "express"
 import bookRouter from "./routers/routes.js";
 import cors from 'cors';
+import authRouter from "./routers/authRoutes.js";
 
 export const app = express()
 
@@ -15,13 +17,17 @@ app.get("/hola", (req, res) => {
 )
 
 app.use('/books', bookRouter)
+app.use('/auth', authRouter)
 
 try {
   await conection_db.authenticate();
   console.log('Conexion exitosa, 👌');
 
-  await bookModel.sync({ force: false });
+  await bookModel.sync({ force: true });
   console.log('Tabla de libros creada');
+
+  await userModel.sync({ force: true });  
+    console.log('Tabla de usuario creada');
 
 } catch (error) {
   console.error('Ups, conexion fallida 😢', error);
