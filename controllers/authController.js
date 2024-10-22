@@ -2,11 +2,12 @@ import userModel from "../models/userModel.js";
 import dotenv from "dotenv";
 import { handleHttpError } from "../utils/handleError.js";
 dotenv.config();
+import { encrypt, compare } from "../utils/handlePassword.js";
 
 export const registerController = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-
+    const hashedPassword = await encrypt(password);
     const existingUserByEmail = await userModel.findOne({ where: { email } });
     if (existingUserByEmail) {
       return res.status(409).json({ message: "El email ya está registrado" });
@@ -20,7 +21,7 @@ export const registerController = async (req, res) => {
     const newUser = {
       name,
       email,
-      password,
+      password: hashedPassword,
     };
     await userModel.create(newUser);
 
@@ -42,7 +43,10 @@ export const loginController = async (req, res) => {
       return;
     }
 
-    if (loginPassword !== user.password) {
+    const hashPassword = user.password;
+    const check = await compare(loginPassword, hashPassword);
+
+    if (!check) {
       handleHttpError(res, "PASSWORD_INVALID", 401);
       return;
     }
