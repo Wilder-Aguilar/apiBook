@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { handleHttpError } from "../utils/handleError.js";
 dotenv.config();
 import { encrypt, compare } from "../utils/handlePassword.js";
+import { tokenSign } from "../utils/handleJwt.js";
 
 export const registerController = async (req, res) => {
   try {
@@ -52,6 +53,7 @@ export const loginController = async (req, res) => {
     }
 
     const sessionData = {
+      token: await tokenSign(user),
       user: user,
     };
 

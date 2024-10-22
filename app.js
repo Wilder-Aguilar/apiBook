@@ -23,10 +23,10 @@ try {
   await conection_db.authenticate();
   console.log('Conexion exitosa, 👌');
 
-  await bookModel.sync({ force: true });
+  await bookModel.sync({ force: false });
   console.log('Tabla de libros creada');
 
-  await userModel.sync({ force: true });  
+  await userModel.sync({ force: false });  
     console.log('Tabla de usuario creada');
 
 } catch (error) {
